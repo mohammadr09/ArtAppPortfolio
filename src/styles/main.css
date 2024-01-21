@@ -1,0 +1,243 @@
+/* main.css */
+
+body {
+    color: whitesmoke;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(10, 11, 6);
+}
+
+.navbar {
+    background: rgb(10,10,8);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo, .nav-list a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease; 
+}
+
+.logo:hover, .nav-list a:hover {
+    color: #3498db;
+}
+
+.logo:hover {
+    text-decoration: underline;
+}
+
+/* Move the buttons to the right */
+.nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+}
+
+.nav-list li {
+    margin-left: 20px;
+}
+
+.nav-list a {
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.nav-list a {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-list a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #3498db;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-list a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* Additional styles for the Art Appreciation page button */
+.nav-list .art-button {
+    background: #3498db;
+}
+
+.nav-list .art-button:hover {
+    background: #fff;
+    color: #3498db;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #333;
+        width: 100%;
+        display: none;
+    }
+
+    .nav-list.show {
+        display: flex;
+    }
+
+    .nav-list li {
+        margin: 0;
+    }
+
+    .nav-list a {
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.main {
+    position: relative;
+    height: 70vh; /* Adjust the height as needed */
+    overflow-x: hidden;
+}
+
+.gallery {
+    display: flex;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    /* margin-right: 10px; Adjust the margin between images */
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+.overlay-text h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.overlay-text p {
+    font-size: 1.2em;
+}
+
+
+/* c */
+
+.main {
+    position: relative;
+    height: 70vh; /* Adjust the height as needed */
+    overflow: hidden; /* Hide vertical overflow */
+}
+
+.gallery {
+    display: flex;
+    white-space: nowrap;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical scrolling */
+}
+
+.gallery img {
+    max-width: 100%; /* Set auto width to maintain aspect ratio */
+    max-height: 100%; /* Set fixed height to prevent vertical expansion */
+     /* Adjust the margin between images */
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+.overlay-text h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.overlay-text p {
+    font-size: 1.2em;
+}
+
+.content-section {
+    background: rgb(10, 11, 6);
+    padding: 30px; /* Adjust padding as needed */
+    opacity: 0; /* Initial opacity set to 0 for fade-in effect */
+    transform: translateY(20px); /* Initial position for smooth animation */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Transition for smooth fade-in effect */
+    border-radius: 15px; /* Add border radius */
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contents {
+    max-width: 60%; /* Adjust the width of the content */
+}
+
+.contents h3 {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.contents .text {
+    color: #ecf0f1;
+    font-size: 1.2em;
+}
+
+.artwork-info {
+    max-width: 35%; /* Adjust the width of the content */
+}
+
+.gallery img {
+    border-radius: 15px; /* Add border radius to the artwork */
+    /* Add other cool effects if needed */
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.1); /* Example: Scale the artwork on hover */
+}
+
+.artwork-info {
+    width: 30%;
+}
