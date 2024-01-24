@@ -348,15 +348,15 @@ footer {
 }
 
 .footer-content .HTML {
-    color: red;
+    color: #ff0000;
 }
 
 .footer-content .CSS {
-    color: skyblue;
+    color: #87ceeb;
 }
 
 .footer-content .JS {
-    color: yellow;
+    color: #ffff00;
 }
 
 @media only screen and (max-width: 768px) {
