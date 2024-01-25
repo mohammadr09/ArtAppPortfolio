@@ -1,0 +1,520 @@
+body {
+    color: whitesmoke;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(10, 11, 6);
+}
+
+.navbar {
+    background: rgb(10,10,8);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo, .nav-list a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease; 
+}
+
+.logo:hover, .nav-list a:hover {
+    color: #3498db;
+}
+
+.logo:hover {
+    text-decoration: underline;
+}
+
+/* Move the buttons to the right */
+.nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+}
+
+.nav-list li {
+    margin-left: 20px;
+}
+
+.nav-list a {
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.nav-list a {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-list a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #3498db;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-list a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* Additional styles for the Art Appreciation page button */
+.nav-list .art-button {
+    background: #3498db;
+}
+
+.nav-list .art-button:hover {
+    background: #fff;
+    color: #3498db;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 850px) {
+
+    .navbar {
+        padding: 1rem;
+        position: relative;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: #fff;
+    }
+
+    .nav-list {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #333;
+        width: 100%;
+    }
+
+    .nav-list.show {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-list a {
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .menu-icon:hover + .nav-list {
+        display: flex;
+    }
+
+    .gallery {
+        flex-direction: column;
+        overflow-x: hidden; /* Disable horizontal scrolling */
+    }
+
+    .gallery img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .overlay-text {
+        text-align: center;
+        top: 40%;
+    }
+
+    .main {
+        height: auto !important;
+    }
+
+    #landingSection::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: linear-gradient(to top, rgb(10, 10, 8), transparent) !important;
+        z-index: 1 !important;
+    }
+
+    #contentSection::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: linear-gradient(to bottom, rgb(10, 10, 8), transparent) !important;
+        z-index: 1 !important;
+    }
+
+    .content-section {
+        padding: 30px 30px 60px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+        border-radius: 15px;
+    }
+
+    .footer-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer-buttons {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .footer-buttons a {
+        margin-bottom: 0.5rem;
+        padding: .5rem;
+    }
+}
+
+
+.main {
+    position: relative;
+    height: 70vh; /* Adjust the height as needed */
+    overflow: hidden; /* Hide vertical overflow */
+}
+
+.gallery {
+    display: flex;
+    white-space: nowrap;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical scrolling */
+}
+
+.gallery img {
+    max-width: 100%; /* Set auto width to maintain aspect ratio */
+    max-height: 100%; /* Set fixed height to prevent vertical expansion */
+     /* Adjust the margin between images */
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+.overlay-text h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.overlay-text p {
+    font-size: 1.2em;
+}
+
+.overlay-text h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.overlay-text p {
+    font-size: 1.2em;
+}
+
+/* Additional styles for hiding artwork and animation */
+#animatedContent {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#animatedContent.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content-section {
+    background: rgb(10, 11, 6);
+    padding: 30px; /* Adjust padding as needed */
+    opacity: 0; /* Initial opacity set to 0 for fade-in effect */
+    transform: translateY(20px); /* Initial position for smooth animation */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Transition for smooth fade-in effect */
+    border-radius: 15px; /* Add border radius */
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contents {
+    max-width: 60%; /* Adjust the width of the content */
+}
+
+.contents h3 {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.contents .text {
+    color: #ecf0f1;
+    font-size: 1.2em;
+}
+
+.artwork-info {
+    max-width: 35%; /* Adjust the width of the content */
+}
+
+#landingSection::after {
+    content: '' ; /* Create a pseudo-element for the gradient overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgb(10, 10, 8), transparent); /* Adjust the colors and transparency as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the images */
+}
+
+#contentSection {
+    margin-top: 1rem;
+    position: relative;
+}
+
+#contentSection::after {
+    content: ''; /* Create a pseudo-element for the gradient overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgb(10, 10, 8), transparent); /* Adjust the colors and transparency as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the images */
+}
+
+.gallery img {
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #ffffff;
+    z-index: 2; /* Ensure the text is above the pseudo-element */
+}
+
+#gallery2 {
+    opacity: .75;
+}
+
+#overlayText2 {
+    color: white;
+}
+
+.footerArea {
+    position: relative;
+}
+
+#footerArea::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 11, 6, 0.8) 0%, rgba(10, 11, 6, 0) 100%);
+    z-index: 1;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8.5rem;
+    color: #fff;
+    background-color: rgba(10, 11, 6, 0.8);
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content {
+    max-width: 800px;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.footer-content .a-email {
+    text-decoration: none;
+    color: #fff;
+    transition: border-bottom 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.footer-content .a-email:hover {
+    text-decoration: underline;
+    color: #3498db;
+}
+
+.footer-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.footer-buttons a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #3498db;
+}
+
+.footer-buttons a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.nav-list a {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-buttons a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #3498db;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.footer-buttons a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.footer-content .HTML {
+    color: #ff0000;
+}
+
+.footer-content .CSS {
+    color: #87ceeb;
+}
+
+.footer-content .JS {
+    color: #ffff00;
+}
+
+@media only screen and (max-width: 768px) {
+    /* Styles for smaller screens */
+    footer {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .footer-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer-buttons {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .footer-buttons a {
+        margin-bottom: 0.5rem;
+        padding: .5rem;
+    }
+}
+
+.contentArea {
+    display: flex;
+    padding: 2rem;
+}
+
+.gallery-content img {
+    max-width: 75%;
+    height: auto;
+    padding: 2rem;
+}
+
+.contentArea h2, .contentArea p {
+    max-width: 75%;
+    padding: 0 2rem;
+}
+
+.contentArea h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.contentArea p {
+    font-size: 1.2em;
+    color: #ecf0f1;
+}
+
+@media only screen and (max-width: 768px) {
+    .contentArea {
+        flex-direction: column; /* Display in a column layout on smaller screens */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .gallery-content,
+    .text-content {
+        width: 100%; /* Make each section take up full width on smaller screens */
+        text-align: center; /* Center text within its container */
+    }
+
+    .gallery-content img {
+        margin-bottom: 1rem;
+    }
+
+    .text-content {
+        padding: 0; /* Remove padding on smaller screens */
+    }
+}
+
+.p > a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.p > a:hover {
+    color: #3498db;
+    text-decoration: underline;
+    transition: all 0.3s ease-in-out 0s;
+}
